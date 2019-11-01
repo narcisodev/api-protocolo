@@ -7,6 +7,8 @@ const dbConfig = require('../config/database')
 const connection = new Sequelize(dbConfig)
 
 //connection to modules
+const Pessoa = require('../models/pessoa.model')
+Pessoa.init(connection)
 
 
 module.exports = connection
