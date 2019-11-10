@@ -1,10 +1,10 @@
 const Sequelize = require('sequelize')
-const dbConfig = require('../config/database')
+const dbConfig = require('../config/dbconfig')
 
 //Require modules
 
 //start connection
-const connection = new Sequelize(dbConfig)
+const connection = new Sequelize(dbConfig);
 
 //connection to modules
 const Pessoa = require('../models/pessoa.model')
