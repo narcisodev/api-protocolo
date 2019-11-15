@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize')
-const dbConfig = require('../config/dbconfig')
+const dbConfig = require('../config/database')
 
 //Require modules
 

@@ -24,6 +24,7 @@ module.exports = {
       cpf_cnpj: {
         type: Sequelize.STRING,
         allowNull: false,
+        unique: true
       },
 
       tipo_pessoa: {
