@@ -1,4 +1,5 @@
 const express = require('express')
+const auth_middlewares = require('../middlewares/auth')
 const routes = express.Router()
 
 //controllers
@@ -6,9 +7,8 @@ const pessoa_controller = require('../controllers/pessoa.controller')
 const user_controller = require('../controllers/user.controller')
 const auth_controller = require('../controllers/auth.controller')
 
-routes.get('/', (req, res) => {
-    return res.json({ ok: 'Conectado com sucesso!' })
-})
+
+routes.use(auth_middlewares)
 
 //Pessoas
 routes.post('/pessoas', pessoa_controller.storage)
