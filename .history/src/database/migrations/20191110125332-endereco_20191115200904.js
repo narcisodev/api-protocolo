@@ -3,7 +3,7 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
 
-    return queryInterface.createTable('usuarios', {
+    return queryInterface.createTable('enderecos', {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -11,22 +11,31 @@ module.exports = {
         allowNull: false
       },
 
-      login: {
-        type: Sequelize.STRING(20),
-        allowNull: false,
-        unique: true,
-      },
+      cep: Sequelize.STRING(8),
 
-      senha: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
+      bairro: Sequelize.STRING(30),
+
+      logradouro: Sequelize.STRING(45),
+
+      numero: Sequelize.STRING(10),
+
+      complemento: Sequelize.STRING,
 
       pessoa_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
           model: 'pessoas', key: 'id'
+        },
+        onUpdate: 'RESTRICT',
+        onDelete: 'RESTRICT'
+      },
+
+      cidade_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'cidades', key: 'id'
         },
         onUpdate: 'RESTRICT',
         onDelete: 'RESTRICT'
@@ -42,11 +51,12 @@ module.exports = {
         allowNull: false,
       },
 
+
     });
 
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('usuarios');
+    return queryInterface.dropTable('cidades');
   }
 };

@@ -31,6 +31,8 @@ module.exports = {
         } catch (error) {
             return res.status(400).json({ error: 'Erro na criação de pessoa', error_description: error.errors[0].message })
         }
+
+
     }
 
 

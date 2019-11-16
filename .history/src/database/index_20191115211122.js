@@ -11,9 +11,9 @@ const Pessoa = require('../models/pessoa.model')
 const Usuario = require('../models/user.model')
 
 Usuario.init(connection)
-Pessoa.init(connection)
-
 Usuario.associate(connection.models)
+
+Pessoa.init(connection)
 
 
 module.exports = connection

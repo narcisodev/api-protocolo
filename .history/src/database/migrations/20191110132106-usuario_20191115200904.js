@@ -47,6 +47,6 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('usuarios');
+    return queryInterface.dropTable('cidades');
   }
 };

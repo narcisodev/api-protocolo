@@ -22,7 +22,7 @@ module.exports = {
         }
 
         try {
-           const pessoa = await Pessoa.create({
+            await Pessoa.create({
                 nome, nome_fantasia, cpf_cnpj, tipo_pessoa
             })
 
@@ -31,6 +31,8 @@ module.exports = {
         } catch (error) {
             return res.status(400).json({ error: 'Erro na criação de pessoa', error_description: error.errors[0].message })
         }
+
+
     }
 
 

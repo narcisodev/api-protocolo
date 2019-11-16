@@ -11,17 +11,6 @@ module.exports = {
         allowNull: false
       },
 
-      login: {
-        type: Sequelize.STRING(20),
-        allowNull: false,
-        unique: true,
-      },
-
-      senha: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-
       pessoa_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -32,21 +21,11 @@ module.exports = {
         onDelete: 'RESTRICT'
       },
 
-      created_at: {
-        type: Sequelize.DATE,
-        allowNull: false,
-      },
-
-      updated_at: {
-        type: Sequelize.DATE,
-        allowNull: false,
-      },
-
     });
 
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('usuarios');
+    return queryInterface.dropTable('cidades');
   }
 };
