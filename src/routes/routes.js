@@ -8,6 +8,10 @@ const user_controller = require('../controllers/user.controller')
 const auth_controller = require('../controllers/auth.controller')
 
 
+//Auth
+routes.post('/auth/login', auth_controller.login)
+
+
 routes.use(auth_middlewares)
 
 //Pessoas
@@ -18,8 +22,6 @@ routes.get('/pessoas', pessoa_controller.index)
 routes.post('/users', user_controller.store)
 routes.get('/users', user_controller.index)
 
-//Auth
-routes.post('/auth/login', auth_controller.login)
 
 
 module.exports = routes
