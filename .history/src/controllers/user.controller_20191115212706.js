@@ -1,5 +1,4 @@
 const Usuario = require('../models/user.model')
-const bcrypt = require('bcryptjs')
 
 module.exports = {
 
@@ -11,7 +10,7 @@ module.exports = {
     },
 
     async store(req, res) {
-        const { login, pass, pessoa_id } = req.body
+        const { login, senha, pessoa_id } = req.body
 
         const usuario_pessoa = await Usuario.findOne({
             where: {
@@ -24,13 +23,11 @@ module.exports = {
 
         try {
 
-            senha = await bcrypt.hash(pass, 10)
-
             const usuario = await Usuario.create({ login, senha, pessoa_id })
             return res.json(usuario)
 
         } catch (erro) {
-            return res.status(400).json({ error: 'Erro ao inserir o usuário', err: erro })
+            return res.status(400).json({ error: 'Erro ao inserir o usuário' })
         }
 
 

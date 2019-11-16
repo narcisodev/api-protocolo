@@ -11,7 +11,7 @@ module.exports = {
     },
 
     async store(req, res) {
-        const { login, pass, pessoa_id } = req.body
+        const { login, senha, pessoa_id } = req.body
 
         const usuario_pessoa = await Usuario.findOne({
             where: {
@@ -24,8 +24,11 @@ module.exports = {
 
         try {
 
-            senha = await bcrypt.hash(pass, 10)
+            console.log(senha)
+        
+            senha = bcrypt.hashSync(senha, 10)
 
+            console.log(senha)
             const usuario = await Usuario.create({ login, senha, pessoa_id })
             return res.json(usuario)
 

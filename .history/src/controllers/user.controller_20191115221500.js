@@ -1,5 +1,5 @@
 const Usuario = require('../models/user.model')
-const bcrypt = require('bcryptjs')
+const bcrypt = require('bcrypt')
 
 module.exports = {
 
@@ -11,7 +11,7 @@ module.exports = {
     },
 
     async store(req, res) {
-        const { login, pass, pessoa_id } = req.body
+        const { login, senha, pessoa_id } = req.body
 
         const usuario_pessoa = await Usuario.findOne({
             where: {
@@ -23,9 +23,8 @@ module.exports = {
             return res.status(400).json({ error: 'Usuário já está cadastrado' })
 
         try {
-
-            senha = await bcrypt.hash(pass, 10)
-
+            var salt = bcrypt.genSaltSync(10)
+            senha = bcrypt.hashSync(senha, salt)
             const usuario = await Usuario.create({ login, senha, pessoa_id })
             return res.json(usuario)
 

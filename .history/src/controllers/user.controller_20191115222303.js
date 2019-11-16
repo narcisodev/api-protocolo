@@ -11,7 +11,7 @@ module.exports = {
     },
 
     async store(req, res) {
-        const { login, pass, pessoa_id } = req.body
+        const { login, senha, pessoa_id } = req.body
 
         const usuario_pessoa = await Usuario.findOne({
             where: {
@@ -24,9 +24,12 @@ module.exports = {
 
         try {
 
-            senha = await bcrypt.hash(pass, 10)
+            console.log(senha)
+        
+           var senha_salvar = await bcrypt.hashSync(senha, 10)
 
-            const usuario = await Usuario.create({ login, senha, pessoa_id })
+            console.log(senha_salvar)
+            const usuario = await Usuario.create({ login, senha_salvar, pessoa_id })
             return res.json(usuario)
 
         } catch (erro) {

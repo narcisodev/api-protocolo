@@ -29,7 +29,7 @@ module.exports = {
           model: 'pessoas', key: 'id'
         },
         onUpdate: 'RESTRICT',
-        onDelete: 'NULL'
+        onDelete: 'CASCADE'
       },
 
       created_at: {

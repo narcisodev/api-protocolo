@@ -24,8 +24,11 @@ module.exports = {
 
         try {
 
+            console.log(senha)
+
             senha = await bcrypt.hash(pass, 10)
 
+            console.log('senha hash ', senha)
             const usuario = await Usuario.create({ login, senha, pessoa_id })
             return res.json(usuario)
 
