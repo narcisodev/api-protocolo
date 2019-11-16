@@ -1,12 +1,18 @@
 const Usuario = require('../models/user.model')
+const Pessoa = require('../models/pessoa.model')
 const bcrypt = require('bcryptjs')
 
 module.exports = {
 
     async index(req, res) {
-        const usuarios = await Usuario.findAll()
+        const usuarios = await Usuario.findAll({
+            include: [{association: 'pessoa'}],
+            attributes: { 
+                exclude: ['senha']
+            }
+        })
 
-        return res.json(usuarios)
+        return res.status(200).json(usuarios)
 
     },
 
@@ -30,7 +36,7 @@ module.exports = {
             return res.json(usuario)
 
         } catch (erro) {
-            return res.status(400).json({ error: 'Erro ao inserir o usuário', err: erro })
+            return res.status(500).json({ error: 'Erro ao inserir o usuário', err: erro })
         }
 
 

@@ -4,6 +4,7 @@ const routes = express.Router()
 //controllers
 const pessoa_controller = require('../controllers/pessoa.controller')
 const user_controller = require('../controllers/user.controller')
+const auth_controller = require('../controllers/auth.controller')
 
 routes.get('/', (req, res) => {
     return res.json({ ok: 'Conectado com sucesso!' })
@@ -16,6 +17,9 @@ routes.get('/pessoas', pessoa_controller.index)
 //Usuários
 routes.post('/users', user_controller.store)
 routes.get('/users', user_controller.index)
+
+//Auth
+routes.post('/auth/login', auth_controller.login)
 
 
 module.exports = routes
